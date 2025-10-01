@@ -47,6 +47,7 @@ public class ConfigHandler {
     private String database;
     private String username;
     private String password;
+    private String databaseOptions;
 
     //  Boost section
     private boolean isBoostEnabled;
@@ -133,8 +134,9 @@ public class ConfigHandler {
         this.host = this.fileConfiguration.getString("storage.mysql.host", "localhost");
         this.port = this.fileConfiguration.getInt("storage.mysql.port", 3306);
         this.database = this.fileConfiguration.getString("storage.mysql.database", "elytraessentials");
-        this.username = this.fileConfiguration.getString("storage.mysql.username", "root");
+        this.username = this.fileConfiguration.getString("storage.mysql.user", "root");
         this.password = this.fileConfiguration.getString("storage.mysql.password", "");
+        this.databaseOptions = this.fileConfiguration.getString("storage.mysql.options", "?useSSL=false&autoReconnect=true");
 
         this.isBoostEnabled = this.fileConfiguration.getBoolean("flight.boost.enabled", true);
         this.boostItem = this.fileConfiguration.getString("flight.boost.item", "FEATHER");
@@ -213,6 +215,7 @@ public class ConfigHandler {
     public final String getDatabase() { return this.database; }
     public final String getUsername() { return this.username; }
     public final String getPassword() { return this.password; }
+    public final String getDatabaseOptions() { return this.databaseOptions; }
 
     public final boolean getIsBoostEnabled() { return this.isBoostEnabled; }
     public final String getBoostItem() { return this.boostItem; }

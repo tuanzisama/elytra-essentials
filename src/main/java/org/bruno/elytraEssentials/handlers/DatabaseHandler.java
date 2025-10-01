@@ -39,6 +39,7 @@ public class DatabaseHandler {
     private String database;
     private String username;
     private String password;
+    private String databaseOptions;
 
     private CancellableTask backupTask = null;
 
@@ -57,7 +58,7 @@ public class DatabaseHandler {
 
         if (storageType == StorageType.MYSQL) {
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database + "?useSSL=false",
+                    "jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database + this.databaseOptions,
                     this.username, this.password
             );
         } else { // SQLITE
@@ -104,6 +105,7 @@ public class DatabaseHandler {
             this.database = configHandler.getDatabase();
             this.username = configHandler.getUsername();
             this.password = configHandler.getPassword();
+            this.databaseOptions = configHandler.getDatabaseOptions();
         }
     }
 
